@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Burmese Scribble OCR</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+  body { margin:0; font-family: 'Inter', sans-serif; background:#F8FAFC; color:#334; }
+  a { text-decoration:none; }
+
+  /* Hero */
+  .hero { position:relative; overflow:hidden; text-align:center; padding:6rem 1rem; background:linear-gradient(135deg,#f8fafc,#e8ebf6); }
+  .blob { position:absolute; border-radius:50%; filter:blur(100px); opacity:.6; animation:blob 10s infinite; }
+  .blob1 { width:300px; height:300px; top:-50px; left:-50px; background:#6366f1; }
+  .blob2 { width:300px; height:300px; top:-50px; right:-50px; background:#a855f7; animation-delay:2s; }
+  .blob3 { width:300px; height:300px; bottom:-100px; left:80px; background:#ec4899; animation-delay:4s; }
+  @keyframes blob { 0%,100%{ transform:translate(0,0) } 33%{ transform:translate(20px,30px) } 66%{ transform:translate(-20px,-30px) } }
+
+  .badge { display:inline-flex; align-items:center; gap:.5rem; padding:.5rem 1rem; border-radius:9999px; background:rgba(255,255,255,.8); backdrop-filter:blur(5px); border:1px solid rgba(99,102,241,.3); margin-bottom:2rem; font-weight:600; font-size:.875rem; }
+  .hero h1 { font-size:3rem; font-weight:700; background:linear-gradient(to right,#111827,#4f46e5,#111827); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:1rem; }
+  .hero p { font-size:1.125rem; max-width:600px; margin:0 auto 2rem; }
+  .hero .cta { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
+  .btn { padding:.75rem 2rem; border-radius:1.25rem; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; gap:.5rem; transition:all .3s; }
+  .btn-primary { background:linear-gradient(to right,#4f46e5,#a855f7); color:#fff; box-shadow:0 5px 15px rgba(79,70,229,.3); }
+  .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(79,70,229,.5); }
+  .btn-secondary { background:rgba(255,255,255,.8); backdrop-filter:blur(5px); border:1px solid rgba(209,213,219,.5); color:#334; }
+  .btn-secondary:hover { transform:translateY(-2px); background:#fff; border-color:#cbd5e1; }
+
+  /* Features */
+  .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; max-width:1200px; margin:0 auto; padding:4rem 1rem; }
+  .feature { background:#fff; border:1px solid #e5e7eb; border-radius:1.25rem; padding:2rem; text-align:center; transition:all .3s; }
+  .feature:hover { box-shadow:0 10px 20px rgba(79,70,229,.2); transform:translateY(-4px); border-color:#c7d2fe; }
+  .feature-icon { width:64px; height:64px; margin:0 auto 1.5rem; border-radius:.75rem; display:flex; align-items:center; justify-content:center; background:linear-gradient(to bottom right,#4f46e5,#a855f7); color:#fff; font-size:1.5rem; }
+
+  /* Steps */
+  .steps { background:#fff; padding:4rem 1rem; max-width:1200px; margin:0 auto; }
+  .steps h2 { text-align:center; font-size:2.25rem; font-weight:700; margin-bottom:1rem; }
+  .steps p { text-align:center; max-width:600px; margin:0 auto 3rem; }
+  .steps-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; position:relative; }
+  .step { background:#fff; border:1px solid #e5e7eb; border-radius:1.25rem; padding:2rem; text-align:center; position:relative; }
+  .step-number { width:64px; height:64px; margin:0 auto 1.5rem; border-radius:9999px; background:linear-gradient(to bottom right,#4f46e5,#a855f7); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.25rem; box-shadow:0 5px 15px rgba(79,70,229,.2); }
+
+  /* Footer */
+  footer { background:#fff; border-top:1px solid #e5e7eb; padding:4rem 1rem; max-width:1200px; margin:0 auto; }
+  footer .footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:2rem; margin-bottom:2rem; }
+  footer h3 { font-weight:600; margin-bottom:1rem; }
+  footer a { color:#4b5563; font-size:.875rem; transition:all .3s; }
+  footer a:hover { color:#4f46e5; }
+
+  footer .brand { display:flex; flex-direction:column; gap:1rem; }
+  footer .brand-logo { width:40px; height:40px; border-radius:.75rem; display:flex; align-items:center; justify-content:center; background:linear-gradient(to bottom right,#4f46e5,#a855f7); color:#fff; font-weight:700; }
+  footer .bottom { display:flex; justify-content:space-between; flex-wrap:wrap; font-size:.875rem; color:#6b7280; }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+
+  <div class="badge">✨ AI-Powered Recognition</div>
+  <h1>Burmese Scribble OCR</h1>
+  <p>AI-powered handwritten Burmese text recognition with <span style="color:#4f46e5;">88% accuracy</span> and <span style="color:#a855f7;">real-time processing</span></p>
+  <div class="cta">
+    <a href="ocrpage.html" class="btn btn-primary">Try Now →</a>
+    <button class="btn btn-secondary">View Demo ▶</button>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features">
+  <div class="feature">
+    <div class="feature-icon">🖌</div>
+    <h3>Sketch Recognition</h3>
+    <p>Draw Burmese text directly on canvas with advanced pen and eraser tools</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">📂</div>
+    <h3>Image Upload OCR</h3>
+    <p>Upload handwritten documents and get instant digital text conversion</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">⚡</div>
+    <h3>Real-time AI Processing</h3>
+    <p>Neural network powered recognition with 88% accuracy in under 2 seconds</p>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="steps">
+  <h2>How It Works</h2>
+  <p>Three simple steps to convert handwritten Burmese text to digital format</p>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-number">01</div>
+      <h3>Draw or Upload</h3>
+      <p>Create handwritten text on canvas or upload an image</p>
+    </div>
+    <div class="step">
+      <div class="step-number">02</div>
+      <h3>AI Recognizes</h3>
+      <p>Advanced neural network analyzes and converts your text</p>
+    </div>
+    <div class="step">
+      <div class="step-number">03</div>
+      <h3>Copy & Use Text</h3>
+      <p>Get digital text instantly ready to copy and use</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div class="brand">
+      <div class="brand-logo">✨</div>
+      <strong>Burmese Scribble OCR</strong>
+      <p>Transform handwritten Burmese text into digital format with AI-powered recognition technology. Fast, accurate, and easy to use.</p>
+    </div>
+    <div>
+      <h3>Product</h3>
+      <a href="ocrpage.html">OCR Tool</a><br>
+      <a href="#">How It Works</a><br>
+      <a href="#">Features</a><br>
+      <a href="#">Pricing</a>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <a href="#">About Us</a><br>
+      <a href="#">Blog</a><br>
+      <a href="#">Contact</a><br>
+      <a href="#">Support</a>
+    </div>
+  </div>
+  <div class="bottom">
+    <p>© 2026 Burmese Scribble OCR. All rights reserved.</p>
+    <div>
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

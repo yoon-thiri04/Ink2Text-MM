@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LetraMyan OCR</title>
+  <style>
+    /* Reset & basics */
+    * { box-sizing: border-box; margin:0; padding:0; font-family: system-ui, sans-serif; }
+    body {
+      background: linear-gradient(135deg,#f0f4ff,#e8eaf6);
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    /* Main container */
+    .container {
+      max-width: 1000px;
+      width: 100%;
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    .container:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+
+    /* Header */
+    .header-card { text-align: center; margin-bottom: 30px; }
+    .header-card h1 {
+      font-size: 40px;
+      background: linear-gradient(90deg,#667eea,#764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient-slide 3s linear infinite;
+      background-size: 200% 200%;
+      margin-bottom: 8px;
+    }
+    .header-card p { font-size: 16px; color:#555; }
+
+    @keyframes gradient-slide {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Output card */
+    .output-card {
+      background: #f9f9f9;
+      border-radius: 16px;
+      padding: 25px;
+      margin-bottom: 25px;
+      min-height: 80px;
+      font-size: 18px;
+      line-height: 1.5;
+      box-shadow: inset 0 3px 8px rgba(0,0,0,0.05);
+      white-space: pre-wrap;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .output-card.recognizing {
+      transform: scale(1.02);
+      box-shadow: inset 0 3px 16px rgba(0,0,0,0.1);
+    }
+
+    /* Tabs */
+    .row { display: flex; gap: 12px; align-items: center; margin-bottom: 15px; }
+    .tab {
+      flex: 1; text-align: center;
+      padding: 12px 0; border-radius: 12px;
+      cursor: pointer; font-weight: 600;
+      background: #e3e6f3; color:#333;
+      transition: all 0.3s ease;
+    }
+    .tab.active {
+      background: linear-gradient(90deg,#667eea,#764ba2);
+      color:#fff;
+      box-shadow: 0 8px 20px rgba(118,75,162,0.3);
+      transform: scale(1.05);
+    }
+
+    /* Tools */
+    .tools { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 15px; }
+    .tool {
+      padding: 8px 20px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: #f3f3f3;
+      font-weight: 500;
+    }
+    .tool:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(118,75,162,0.2); }
+    .tool.active {
+      background: #764ba2; color:#fff; border-color:#764ba2;
+      box-shadow: 0 6px 18px rgba(118,75,162,0.4);
+      animation: tool-pulse 1s infinite alternate;
+    }
+    @keyframes tool-pulse {
+      0% { transform: scale(1); box-shadow: 0 6px 18px rgba(118,75,162,0.4);}
+      100% { transform: scale(1.05); box-shadow: 0 10px 25px rgba(118,75,162,0.6);}
+    }
+
+    .range-label { display:flex; align-items:center; gap:10px; font-weight:500; }
+    input[type="range"]{ cursor:pointer; }
+    input[type="color"]{ width:36px; height:36px; border-radius:8px; border:none; cursor:pointer; }
+
+    /* Upload */
+    .upload-btn {
+      padding: 10px 25px;
+      background: linear-gradient(90deg,#667eea,#764ba2);
+      color:#fff; border:none; border-radius:10px;
+      cursor:pointer; font-weight:600;
+      transition: all 0.3s ease;
+    }
+    .upload-btn:hover { transform: scale(1.05); background: linear-gradient(90deg,#556cd6,#5b3a99); }
+
+    /* Canvas */
+    .canvas-wrapper {
+      background: #fff; border-radius:16px;
+      padding:15px; display:flex; justify-content:center; margin-bottom:15px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+    .canvas-wrapper.active {
+      
+    }
+    canvas { border: 2px dashed #ccc; border-radius:12px; transition: all 0.3s ease; }
+    canvas.active { border:2px solid #764ba2; }
+
+    /* Buttons */
+    .action-btn, .action-btn-primary {
+      padding:12px 25px; border-radius:12px; font-weight:600; cursor:pointer;
+      transition: all 0.3s ease; border:none; margin-right:10px;
+    }
+    .action-btn { background:#f3f3f3; border:1px solid #ccc; }
+    .action-btn:hover { background:#e0e0e0; transform: scale(1.05); }
+    .action-btn-primary { background: linear-gradient(90deg,#667eea,#764ba2); color:#fff; }
+    .action-btn-primary:hover { background: linear-gradient(90deg,#556cd6,#5b3a99); transform: scale(1.05); }
+
+    /* Responsive */
+    @media(max-width:768px){
+      .row { flex-direction: column; }
+      .tools { flex-direction: column; }
+      canvas { width: 100% !important; height:auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header-card">
+      <h1>Burmese Scribble OCR</h1>
+      <p>Draw or upload Burmese text for instant AI recognition</p>
+    </div>
+
+    <div class="output-card" id="output">Your recognized text will appear here…</div>
+
+    <!-- Tabs -->
+    <div class="row">
+      <div class="tab active" id="tab-sketch">🖌 Sketch</div>
+      <div class="tab" id="tab-upload">📂 Upload</div>
+    </div>
+
+    <!-- Sketch tools -->
+    <div class="tools" id="tools-sketch">
+      <div class="tool active" id="pen-btn">Pen</div>
+      <div class="tool" id="eraser-btn">Eraser</div>
+      <label class="range-label">Brush
+        <input type="range" min="2" max="40" value="12" id="brush-size">
+      </label>
+      <input type="color" value="#000000" id="brush-color">
+    </div>
+
+    <!-- Upload tools -->
+    <div class="row" id="tools-upload" style="display:none;">
+      <button class="upload-btn" id="upload-btn">Select Image</button>
+      <input type="file" id="file-input" hidden accept="image/*">
+    </div>
+
+    <!-- Canvas -->
+    <div class="canvas-wrapper" id="canvas-wrapper">
+      <canvas width="800" height="400" id="canvas"></canvas>
+    </div>
+
+    <!-- Action buttons -->
+    <div class="row">
+      <button class="action-btn" id="clear-btn">Clear</button>
+      <button class="action-btn-primary" id="recognize-btn">Recognize</button>
+    </div>
+  </div>
+
+  <script>
+    // Canvas setup
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const output = document.getElementById("output");
+    const canvasWrapper = document.getElementById("canvas-wrapper");
+
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.lineCap = "round"; ctx.lineJoin = "round";
+
+    let drawing = false, brushSize=12, color="#000", tool="pen", currentMode="sketch", recognizeTimer=null;
+
+    canvas.addEventListener("mousedown", e => {
+      if(currentMode!=="sketch") return;
+      drawing=true; canvas.classList.add("active"); canvasWrapper.classList.add("active");
+      const rect = canvas.getBoundingClientRect();
+      ctx.beginPath(); ctx.moveTo(e.clientX-rect.left, e.clientY-rect.top);
+    });
+    canvas.addEventListener("mousemove", e => {
+      if(!drawing||currentMode!=="sketch") return;
+      const rect=canvas.getBoundingClientRect();
+      ctx.strokeStyle = tool==="eraser"?"#fff":color;
+      ctx.lineWidth = brushSize;
+      ctx.lineTo(e.clientX-rect.left,e.clientY-rect.top); ctx.stroke();
+    });
+    function stopDrawing(){
+      if(currentMode!=="sketch") return;
+      drawing=false; canvas.classList.remove("active"); canvasWrapper.classList.remove("active");
+      clearTimeout(recognizeTimer);
+recognizeTimer = setTimeout(recognize, 1000);
+    }
+    canvas.addEventListener("mouseup", stopDrawing);
+    canvas.addEventListener("mouseleave", stopDrawing);
+
+    // Tabs
+    const tabSketch = document.getElementById("tab-sketch");
+    const tabUpload = document.getElementById("tab-upload");
+    const toolsSketch = document.getElementById("tools-sketch");
+    const toolsUpload = document.getElementById("tools-upload");
+
+    tabSketch.addEventListener("click",()=>{
+      currentMode="sketch";
+      tabSketch.classList.add("active"); tabUpload.classList.remove("active");
+      toolsSketch.style.display="flex"; toolsUpload.style.display="none";
+    });
+    tabUpload.addEventListener("click",()=>{
+      currentMode="upload";
+      tabUpload.classList.add("active"); tabSketch.classList.remove("active");
+      toolsUpload.style.display="flex"; toolsSketch.style.display="none";
+    });
+
+    // Tools
+    const penBtn = document.getElementById("pen-btn");
+    const eraserBtn = document.getElementById("eraser-btn");
+    const brushInput = document.getElementById("brush-size");
+    const colorInput = document.getElementById("brush-color");
+
+    penBtn.addEventListener("click",()=>{ tool="pen"; penBtn.classList.add("active"); eraserBtn.classList.remove("active"); });
+    eraserBtn.addEventListener("click",()=>{ tool="eraser"; eraserBtn.classList.add("active"); penBtn.classList.remove("active"); });
+    brushInput.addEventListener("input",e=>brushSize=e.target.value);
+    colorInput.addEventListener("input",e=>color=e.target.value);
+
+    // Clear
+    document.getElementById("clear-btn").addEventListener("click",()=>{
+      ctx.fillStyle="#fff"; ctx.fillRect(0,0,canvas.width,canvas.height);
+      output.textContent="Your recognized text will appear here…";
+    });
+const fileInput = document.getElementById("file-input");
+    const uploadBtn = document.getElementById("upload-btn");
+    uploadBtn.addEventListener("click",()=>fileInput.click());
+    fileInput.addEventListener("change", e=>{
+      const file = e.target.files[0]; if(!file) return;
+      const img = new Image();
+      img.onload=()=>{
+        ctx.fillStyle="#fff"; ctx.fillRect(0,0,canvas.width,canvas.height);
+        const scale=Math.min(canvas.width/img.width, canvas.height/img.height);
+        const x=(canvas.width-img.width*scale)/2;
+        const y=(canvas.height-img.height*scale)/2;
+        ctx.drawImage(img,x,y,img.width*scale,img.height*scale);
+        recognize();
+      };
+      img.src=URL.createObjectURL(file);
+    });
+   
+    async function recognize(){
+      output.classList.add("recognizing");
+      output.textContent="Recognizing…";
+      const image = canvas.toDataURL("image/png");
+      try{
+        const res = await fetch("http://localhost:8000/ocr", {
+          method:"POST",
+          headers:{ "Content-Type":"application/json" },
+          body: JSON.stringify({ image })
+        });
+        const data = await res.json();
+        output.textContent=data.text||"No text recognized";
+      }catch(err){ console.error(err); output.textContent="Cannot connect to OCR server"; }
+      output.classList.remove("recognizing");
+    }
+    document.getElementById("recognize-btn").addEventListener("click", recognize);
+  </script>
+</body>
+</html>
