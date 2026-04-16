@@ -18,6 +18,7 @@ The system allows users to draw Burmese text on a sketch canvas and instantly co
     </td>
   </tr>
 </table>
+
 ---
 ###  Key Purposes
 * **Digital Stationery:** Seamless note-taking on PDFs and digital sketches for iPad/Tablet users.
@@ -83,7 +84,14 @@ So in the following test case,
 - **Model Output:** `ရန်ကုန်ပြို့`
 
 - The model confuses visually similar characters such as: **မ, ပ, ဖ**
-<img width="500" height="500" alt="5" src="https://github.com/user-attachments/assets/2fb8e685-d74c-474d-a955-1d0bf466935f" />
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/2fb8e685-d74c-474d-a955-1d0bf466935f" width="100%"/><br/>
+      <sub><b>Error Analysis</b></sub>
+    </td>
+  </tr>
+</table>
 
 ---
 ## 🗂️ Dataset
