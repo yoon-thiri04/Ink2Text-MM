@@ -88,7 +88,7 @@ So in the following test case,
   <tr>
     <td align="center">
       <img src="https://github.com/user-attachments/assets/2fb8e685-d74c-474d-a955-1d0bf466935f" width="100%"/><br/>
-      <sub><b>Error Analysis</b></sub>
+      <sub><b>Example for Error Analysis</b></sub>
     </td>
   </tr>
 </table>
