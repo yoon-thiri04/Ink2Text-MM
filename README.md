@@ -20,7 +20,7 @@ The system allows users to draw Burmese text on a sketch canvas and instantly co
   </tr>
 </table>
 
-### 📋 Demo Outputs
+### Demo Outputs
 
 | Handwritten Input | Model Output |
 | ----------------- | ------------ |
