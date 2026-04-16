@@ -36,7 +36,9 @@ The system allows users to draw Burmese text on a sketch canvas and instantly co
 | Handwritten Input | Model Output |
 | ----------------- | ------------ |
 | မင်္ဂလာပါ         | မင်္ဂလာပါ    |
-| မနက် ၃ နာရီ       | မနက် ၃ နာရီ  |
+| တက္ကသိုလ်      | တက္ကသိုလ်  |
+| ၁၂၃၄၅၆       |  ၁၂၃၄၅၆ |
+| ကျန်းမာရေး   | ကျန်းမာရေး | 
 
 ---
 ###  Key Purposes
