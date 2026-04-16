@@ -48,7 +48,7 @@ A **Two-layer Bidirectional LSTM** processes the visual features extracted by th
 * **Temporal Processing:** Handles the variable horizontal positioning of handwritten text.
 
 ### 3. Classification & Decoding (CTC)
-* **Linear Layer:** Maps the BiLSTM hidden states to 68 distinct classes, including the Burmese alphabet, digits, and special markers.
+* **Linear Layer:** Maps the BiLSTM hidden states to **68** distinct classes, including the Burmese alphabet, digits, and special markers.
 * **Alignment-Free Decoding:** Uses **CTC Loss** and **Greedy Decoding** to predict the final text sequence without requiring pixel-perfect alignment between the image and the labels.
 
 ---
