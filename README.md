@@ -4,7 +4,8 @@
 
 ---
 ## Demo
-The system allows users to draw Burmese text on a sketch canvas and instantly converts it into digital copyable Unicode text.
+The system allows users to draw Burmese text on a sketch canvas and instantly converts it into digital, copyable Unicode text.
+- 📌 **Note:** In the demo images, the **upper text field represents the model’s output (recognized result)**, while the canvas below shows the handwritten input.
 
 <table>
   <tr>
@@ -18,6 +19,13 @@ The system allows users to draw Burmese text on a sketch canvas and instantly co
     </td>
   </tr>
 </table>
+
+### 📋 Demo Outputs
+
+| Handwritten Input | Model Output |
+| ----------------- | ------------ |
+| မင်္ဂလာပါ         | မင်္ဂလာပါ    |
+| မနက် ၃ နာရီ       | မနက် ၃ နာရီ  |
 
 ---
 ###  Key Purposes
