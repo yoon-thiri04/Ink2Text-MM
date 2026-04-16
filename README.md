@@ -10,11 +10,21 @@ The system allows users to draw Burmese text on a sketch canvas and instantly co
 <table>
   <tr>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/3e2b2d49-c5ff-47b4-b908-46bc7b7c3222" width="100%"/><br/>
+      <img src="https://github.com/user-attachments/assets/254222ae-af1f-4297-b5bc-b4c5db81d6d6" width="100%"/><br/>
       <sub><b>Demo 1</b></sub>
     </td>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/cdd0d5f2-c747-4ee1-91bf-a22ef689cbd7" width="100%"/><br/>
+      <img src="https://github.com/user-attachments/assets/ad41ed3c-9286-4c7c-b164-62e2c617d607" width="100%"/><br/>
+      <sub><b>Demo 2</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/eedbf4da-d130-47fc-ac01-8a311081ddcf" width="100%"/><br/>
+      <sub><b>Demo 1</b></sub>
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/912a70cb-eaac-4a66-8a72-4756e61cd2ba" width="100%"/><br/>
       <sub><b>Demo 2</b></sub>
     </td>
   </tr>
