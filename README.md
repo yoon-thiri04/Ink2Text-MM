@@ -29,8 +29,8 @@ The system allows users to draw Burmese text on a sketch canvas and instantly co
 
 ---
 ###  Key Purposes
-* **Digital Stationery:** Seamless note-taking on PDFs and digital sketches for iPad/Tablet users.
-* **Educational Tool:** An interactive way to teach children Burmese calligraphy by providing instant digital feedback on their handwritten letters.
+* **Digital Stationery:** Seamless **note-taking on PDFs** and digital sketches for **iPad/Tablet** users.
+* **Educational Tool:** An interactive way to **teach** children **Burmese calligraphy** by providing instant digital feedback on their handwritten letters.
 * **Accessibility:** Making digital content creation more intuitive for those who prefer handwriting over typing.
 * **Digitization:** Rapidly converting handwritten archives or personal journals into searchable digital formats.
 
