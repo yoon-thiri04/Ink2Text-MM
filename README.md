@@ -4,13 +4,20 @@
 
 ---
 ## Demo
-The system allows users to draw Burmese text on a sketch canvas and instantly converts it into digital Unicode text.
+The system allows users to draw Burmese text on a sketch canvas and instantly converts it into digital copyable Unicode text.
 
-### Correct Recognition Examples
-<img width="500" height="500" alt="Demo 1" src="https://github.com/user-attachments/assets/3e2b2d49-c5ff-47b4-b908-46bc7b7c3222" />
-
-<img width="500" height="500" alt="Demo 2" src="https://github.com/user-attachments/assets/cdd0d5f2-c747-4ee1-91bf-a22ef689cbd7" />
-
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/3e2b2d49-c5ff-47b4-b908-46bc7b7c3222" width="100%"/><br/>
+      <sub><b>Demo 1</b></sub>
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/cdd0d5f2-c747-4ee1-91bf-a22ef689cbd7" width="100%"/><br/>
+      <sub><b>Demo 2</b></sub>
+    </td>
+  </tr>
+</table>
 ---
 ###  Key Purposes
 * **Digital Stationery:** Seamless note-taking on PDFs and digital sketches for iPad/Tablet users.
