@@ -98,8 +98,7 @@ Nov 11–15, 2024, Pattaya, Thailand.
 
 ---
 ##  Future Work
-
-* **Stroke-Level Feedback:** Provide fine-grained feedback on handwriting quality to support learning applications for children.
+* **Try with other OCR Architecture:** Move beyond the traditional CRNN-CTC pipeline by exploring modern approaches such as:Transformer-based OCR models
 
 * **Post-OCR Correction with Language Models:** Improve recognition accuracy by integrating:
   * N-gram based statistical correction
@@ -107,6 +106,7 @@ Nov 11–15, 2024, Pattaya, Thailand.
   * LLM-based contextual correction for Burmese text
 
 * **Multi-line & Document OCR:** Extend from single-line recognition to full-page document understanding.
+* **Stroke-Level Feedback:** Provide fine-grained feedback on handwriting quality to support learning applications for children.
 ---
 
 ## 👥 Contributors
