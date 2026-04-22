@@ -77,11 +77,12 @@ A **Two-layer Bidirectional LSTM** processes the visual features extracted by th
 ## Performance & Evaluation
 The model was evaluated on a dedicated test set of handwritten Burmese scribbles. Despite the inherent variability in human handwriting, the CRNN pipeline achieved high precision in character recognition.
 
-* **Character Error Rate (CER)**: 1.69%
+| Metric | Result (%) |
+| :--- | :--- |
+| **Character Error Rate (CER)** | **1.69** |
+| **Word Error Rate (WER)** | 12.14 |
+| **Exact-Match Accuracy** | 87.86 |
 
-* **Word Error Rate (WER)**: 12.14%
-
-* **Exact-Match Accuracy**: 87.86%
 ---
 ## Confusion Analysis (Test Data Insights)
 
