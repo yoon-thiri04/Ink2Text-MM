@@ -6,7 +6,6 @@
 ## Demo
 The system allows users to draw Burmese text on a sketch canvas and instantly converts it into digital, copyable Unicode text.
 - 📌 **Note:** In the demo images, the **upper text field represents the model’s output (recognized result)**, while the canvas below shows the handwritten input.
-
 <table>
   <tr>
     <td align="center">
